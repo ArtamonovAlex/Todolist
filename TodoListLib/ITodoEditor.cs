@@ -19,5 +19,8 @@ namespace TodoListLib
 
         [OperationContract]
         void InitializeList(string username);
+
+        [OperationContract]
+        void AddTask(Task task);
     }
 }

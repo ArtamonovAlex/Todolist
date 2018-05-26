@@ -24,6 +24,7 @@ namespace Client
                 switch (option)
                 {
                     case 1:
+                        client.AddTask(TodoIO.AddTask());
                         break;
                     case 2:
                         TodoList list = JsonConverter.GetObject<TodoList>(client.GetList());

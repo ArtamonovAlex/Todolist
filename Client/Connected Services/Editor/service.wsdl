@@ -59,6 +59,12 @@
   <wsdl:message name="ITodoEditor_InitializeList_OutputMessage">
     <wsdl:part name="parameters" element="tns:InitializeListResponse" />
   </wsdl:message>
+  <wsdl:message name="ITodoEditor_AddTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTask" />
+  </wsdl:message>
+  <wsdl:message name="ITodoEditor_AddTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTaskResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITodoEditor">
     <wsdl:operation name="GetList">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoEditor/GetList" message="tns:ITodoEditor_GetList_InputMessage" />
@@ -71,6 +77,10 @@
     <wsdl:operation name="InitializeList">
       <wsdl:input wsaw:Action="http://tempuri.org/ITodoEditor/InitializeList" message="tns:ITodoEditor_InitializeList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITodoEditor/InitializeListResponse" message="tns:ITodoEditor_InitializeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITodoEditor/AddTask" message="tns:ITodoEditor_AddTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITodoEditor/AddTaskResponse" message="tns:ITodoEditor_AddTask_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ITodoEditor" type="tns:ITodoEditor">
@@ -97,6 +107,15 @@
     </wsdl:operation>
     <wsdl:operation name="InitializeList">
       <soap12:operation soapAction="http://tempuri.org/ITodoEditor/InitializeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTask">
+      <soap12:operation soapAction="http://tempuri.org/ITodoEditor/AddTask" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

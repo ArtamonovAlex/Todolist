@@ -38,5 +38,37 @@ namespace TodoListLib
             }
             Console.WriteLine("-------------------------");
         }
+
+        public static Task AddTask()
+        {
+            Console.WriteLine("New task:");
+            Console.Write($"{"Title:",16} ");
+            string title = Console.ReadLine();
+            Console.Write($"{"Description:",22} ");
+            string description = Console.ReadLine();
+            DateTime date;
+            while (true)
+            {
+                Console.Write($"{"Deadline in format dd.mm.yyyy:",40} ");
+                if (!DateTime.TryParse(Console.ReadLine(), out date))
+                {
+                    Console.WriteLine("Wrong input");
+                    continue;
+                }
+                if (date >= DateTime.Now) break;
+                Console.WriteLine("Sorry, you lost your time. Please, think of a new deadline.");
+            }
+            Console.WriteLine($"{"Tags (finish on empty line):",38} ");
+            List<string> tags = new List<string> { };
+            int counter = 1;
+            do
+            {
+                Console.Write($"{counter,15}: ");
+                counter++;
+                tags.Add(Console.ReadLine());
+            } while (tags[tags.Count - 1] != "");
+            tags.Remove("");
+            return new Task(title, description, date, tags);
+        }
     } 
 }

@@ -32,6 +32,12 @@ namespace Client.Editor {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/InitializeList", ReplyAction="http://tempuri.org/ITodoEditor/InitializeListResponse")]
         System.Threading.Tasks.Task InitializeListAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/AddTask", ReplyAction="http://tempuri.org/ITodoEditor/AddTaskResponse")]
+        void AddTask(TodoListLib.Task task);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/AddTask", ReplyAction="http://tempuri.org/ITodoEditor/AddTaskResponse")]
+        System.Threading.Tasks.Task AddTaskAsync(TodoListLib.Task task);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace Client.Editor {
         
         public System.Threading.Tasks.Task InitializeListAsync(string username) {
             return base.Channel.InitializeListAsync(username);
+        }
+        
+        public void AddTask(TodoListLib.Task task) {
+            base.Channel.AddTask(task);
+        }
+        
+        public System.Threading.Tasks.Task AddTaskAsync(TodoListLib.Task task) {
+            return base.Channel.AddTaskAsync(task);
         }
     }
 }

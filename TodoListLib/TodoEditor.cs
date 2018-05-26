@@ -7,7 +7,7 @@ namespace TodoListLib
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "TodoEditor" в коде и файле конфигурации.
     public class TodoEditor : ITodoEditor
     {
-        public TodoList List = new TodoList(new List<Task>() { new Task("test", "test", DateTime.Parse("12.12.2018"), new List<string>() { "1" }) } );
+        public TodoList List = new TodoList(new List<Task>());
 
         public void InitializeList(string username)
         {
@@ -47,6 +47,12 @@ namespace TodoListLib
         public string GetTask(Task task)
         {
             return JsonConverter.ToJson(task);
+        }
+
+        public void AddTask(Task task)
+        {
+            List.Tasks.Add(task);
+            List.Sort();
         }
     }
 }
