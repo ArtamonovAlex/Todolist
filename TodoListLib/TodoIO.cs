@@ -100,5 +100,11 @@ namespace TodoListLib
                 return false;
             }
         }
+
+        public static string ReadPath()
+        {
+            Console.Write("Path to the file (input 'cancel' to get back to menu): ");
+            return Console.ReadLine();
+        }
     } 
 }

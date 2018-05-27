@@ -16,7 +16,7 @@ namespace TodoListLib
         string GetTask(Task task);
 
         [OperationContract]
-        void InitializeList(string username);
+        void InitializeList(string tableName);
 
         [OperationContract]
         void AddTask(string task);
@@ -26,5 +26,14 @@ namespace TodoListLib
 
         [OperationContract]
         void DeleteTasks(string tasks);
+
+        [OperationContract]
+        void Save(string path);
+
+        [OperationContract]
+        void Load(string path);
+
+        [OperationContract]
+        void SaveMain(string tableName);
     }
 }

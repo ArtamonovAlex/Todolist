@@ -9,34 +9,10 @@ namespace TodoListLib
     {
         public TodoList List = new TodoList(new List<Task>());
 
-        public void InitializeList(string username)
+        public void InitializeList(string tableName)
         {
-            List<Task> tasks = new List<Task>();
-            string path = $"C:\\Users\\artam\\Desktop\\list{username}.csv";
-            FileStream file = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read);
-            using (StreamReader reader = new StreamReader(file))
-            {
-                reader.ReadLine();
-                char[] separator = { ';' };
-                while (!reader.EndOfStream)
-                {
-                    string inputString = reader.ReadLine();
-                    string[] elements = inputString.Split(separator);
-                    string title = elements[0];
-                    string description = elements[1];
-                    DateTime date = DateTime.Parse(elements[2]);
-                    List<string> tags = new List<string> { };
-                    for (int i = 3; i < elements.Length; i++)
-                    {
-                        string tag = elements[i];
-                        tags.Add(tag);
-                    }
-                    Task task = new Task(title, description, date, tags);
-                    tasks.Add(task);
-                }
-            }
-            file.Close();
-            List.Tasks = tasks;
+            string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
+            Load(privatePath);
         }
 
         public string GetList()
@@ -73,6 +49,62 @@ namespace TodoListLib
         public void DeleteTasks(string tasks)
         {
             List = JsonConverter.GetObject<TodoList>(tasks);
+        }
+
+        public void Save(string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write);
+            using (StreamWriter writer = new StreamWriter(file))
+            {
+                writer.WriteLine("Title;Description;Deadline;Tags");
+                foreach (Task item in List.Tasks)
+                {
+                    writer.Write(item.Title + ";");
+                    writer.Write(item.Description + ";");
+                    writer.Write(item.Deadline.ToShortDateString());
+                    foreach (string tag in item.Tags)
+                    {
+                        writer.Write(";" + tag);
+                    }
+                    writer.WriteLine();
+                }
+            }
+            file.Close();
+        }
+
+        public void SaveMain(string tableName)
+        {
+            string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
+            Save(privatePath);
+        }
+
+        public void Load(string path)
+        {
+            List<Task> tasks = new List<Task> { };
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            using (StreamReader reader = new StreamReader(file))
+            {
+                reader.ReadLine();
+                char[] separator = { ';' };
+                while (!reader.EndOfStream)
+                {
+                    string inputString = reader.ReadLine();
+                    string[] elements = inputString.Split(separator);
+                    string title = elements[0];
+                    string description = elements[1];
+                    DateTime date = DateTime.Parse(elements[2]);
+                    List<string> tags = new List<string> { };
+                    for (int i = 3; i < elements.Length; i++)
+                    {
+                        string tag = elements[i];
+                        tags.Add(tag);
+                    }
+                    Task task = new Task(title, description, date, tags);
+                    tasks.Add(task);
+                }
+            }
+            file.Close();
+            List.Tasks = tasks;
         }
     }
 }

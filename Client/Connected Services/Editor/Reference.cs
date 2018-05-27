@@ -28,10 +28,10 @@ namespace Client.Editor {
         System.Threading.Tasks.Task<string> GetTaskAsync(TodoListLib.Task task);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/InitializeList", ReplyAction="http://tempuri.org/ITodoEditor/InitializeListResponse")]
-        void InitializeList(string username);
+        void InitializeList(string tableName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/InitializeList", ReplyAction="http://tempuri.org/ITodoEditor/InitializeListResponse")]
-        System.Threading.Tasks.Task InitializeListAsync(string username);
+        System.Threading.Tasks.Task InitializeListAsync(string tableName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/AddTask", ReplyAction="http://tempuri.org/ITodoEditor/AddTaskResponse")]
         void AddTask(string task);
@@ -50,6 +50,24 @@ namespace Client.Editor {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/DeleteTasks", ReplyAction="http://tempuri.org/ITodoEditor/DeleteTasksResponse")]
         System.Threading.Tasks.Task DeleteTasksAsync(string tasks);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/Save", ReplyAction="http://tempuri.org/ITodoEditor/SaveResponse")]
+        void Save(string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/Save", ReplyAction="http://tempuri.org/ITodoEditor/SaveResponse")]
+        System.Threading.Tasks.Task SaveAsync(string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/Load", ReplyAction="http://tempuri.org/ITodoEditor/LoadResponse")]
+        void Load(string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/Load", ReplyAction="http://tempuri.org/ITodoEditor/LoadResponse")]
+        System.Threading.Tasks.Task LoadAsync(string path);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/SaveMain", ReplyAction="http://tempuri.org/ITodoEditor/SaveMainResponse")]
+        void SaveMain(string tableName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/SaveMain", ReplyAction="http://tempuri.org/ITodoEditor/SaveMainResponse")]
+        System.Threading.Tasks.Task SaveMainAsync(string tableName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -95,12 +113,12 @@ namespace Client.Editor {
             return base.Channel.GetTaskAsync(task);
         }
         
-        public void InitializeList(string username) {
-            base.Channel.InitializeList(username);
+        public void InitializeList(string tableName) {
+            base.Channel.InitializeList(tableName);
         }
         
-        public System.Threading.Tasks.Task InitializeListAsync(string username) {
-            return base.Channel.InitializeListAsync(username);
+        public System.Threading.Tasks.Task InitializeListAsync(string tableName) {
+            return base.Channel.InitializeListAsync(tableName);
         }
         
         public void AddTask(string task) {
@@ -125,6 +143,30 @@ namespace Client.Editor {
         
         public System.Threading.Tasks.Task DeleteTasksAsync(string tasks) {
             return base.Channel.DeleteTasksAsync(tasks);
+        }
+        
+        public void Save(string path) {
+            base.Channel.Save(path);
+        }
+        
+        public System.Threading.Tasks.Task SaveAsync(string path) {
+            return base.Channel.SaveAsync(path);
+        }
+        
+        public void Load(string path) {
+            base.Channel.Load(path);
+        }
+        
+        public System.Threading.Tasks.Task LoadAsync(string path) {
+            return base.Channel.LoadAsync(path);
+        }
+        
+        public void SaveMain(string tableName) {
+            base.Channel.SaveMain(tableName);
+        }
+        
+        public System.Threading.Tasks.Task SaveMainAsync(string tableName) {
+            return base.Channel.SaveMainAsync(tableName);
         }
     }
 }
