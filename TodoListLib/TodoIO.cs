@@ -106,5 +106,19 @@ namespace TodoListLib
             Console.Write("Path to the file (input 'cancel' to get back to menu): ");
             return Console.ReadLine();
         }
+
+        public static int GetMenuOption()
+        {
+            int option;
+            Console.WriteLine("Press Enter to continue");
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("1.Add task\n2.Last tasks\n3.Find tasks by tags\n4.Load from .csv file\n5.Save in .csv format\n6.Exit");
+            while (!int.TryParse(Console.ReadLine(), out option))
+            {
+                Console.WriteLine("Wrong imput, choose the correct option");
+            }
+            return option;
+        }
     } 
 }

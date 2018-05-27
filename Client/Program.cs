@@ -16,18 +16,9 @@ namespace Client
             var client = new Editor.TodoEditorClient("NetTcpBinding_ITodoEditor");
             client.InitializeList(args[0]);
             bool isWorking = true;
-            int option;
             while (isWorking)
             {
-                Console.WriteLine("Press Enter to continue");
-                Console.ReadLine();
-                Console.Clear();
-                Console.WriteLine("1.Add task\n2.Last tasks\n3.Find tasks by tags\n4.Load from .csv file\n5.Save in .csv format\n6.Exit");
-                while (!int.TryParse(Console.ReadLine(), out option))
-                {
-                    Console.WriteLine("Wrong imput, choose the correct option");
-                }
-                switch (option)
+                switch (TodoIO.GetMenuOption())
                 {
                     case 1:
                         {
