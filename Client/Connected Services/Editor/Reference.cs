@@ -34,10 +34,22 @@ namespace Client.Editor {
         System.Threading.Tasks.Task InitializeListAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/AddTask", ReplyAction="http://tempuri.org/ITodoEditor/AddTaskResponse")]
-        void AddTask(TodoListLib.Task task);
+        void AddTask(string task);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/AddTask", ReplyAction="http://tempuri.org/ITodoEditor/AddTaskResponse")]
-        System.Threading.Tasks.Task AddTaskAsync(TodoListLib.Task task);
+        System.Threading.Tasks.Task AddTaskAsync(string task);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/FindTasks", ReplyAction="http://tempuri.org/ITodoEditor/FindTasksResponse")]
+        string FindTasks(string[] tags);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/FindTasks", ReplyAction="http://tempuri.org/ITodoEditor/FindTasksResponse")]
+        System.Threading.Tasks.Task<string> FindTasksAsync(string[] tags);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/DeleteTasks", ReplyAction="http://tempuri.org/ITodoEditor/DeleteTasksResponse")]
+        void DeleteTasks(string tasks);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITodoEditor/DeleteTasks", ReplyAction="http://tempuri.org/ITodoEditor/DeleteTasksResponse")]
+        System.Threading.Tasks.Task DeleteTasksAsync(string tasks);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,12 +103,28 @@ namespace Client.Editor {
             return base.Channel.InitializeListAsync(username);
         }
         
-        public void AddTask(TodoListLib.Task task) {
+        public void AddTask(string task) {
             base.Channel.AddTask(task);
         }
         
-        public System.Threading.Tasks.Task AddTaskAsync(TodoListLib.Task task) {
+        public System.Threading.Tasks.Task AddTaskAsync(string task) {
             return base.Channel.AddTaskAsync(task);
+        }
+        
+        public string FindTasks(string[] tags) {
+            return base.Channel.FindTasks(tags);
+        }
+        
+        public System.Threading.Tasks.Task<string> FindTasksAsync(string[] tags) {
+            return base.Channel.FindTasksAsync(tags);
+        }
+        
+        public void DeleteTasks(string tasks) {
+            base.Channel.DeleteTasks(tasks);
+        }
+        
+        public System.Threading.Tasks.Task DeleteTasksAsync(string tasks) {
+            return base.Channel.DeleteTasksAsync(tasks);
         }
     }
 }

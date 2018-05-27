@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ce18f6c1-5b1e-47e4-9ece-806492bc44b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="aaca5a14-2cdb-4943-81ac-7a9f589b3692" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="net.tcp://localhost:1919/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b239ec1d-8ccd-4691-bb79-5ceeebdaa425" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="79428fa0-f8b8-4cf5-966f-49ce53dd7f12" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="59c9583e-2394-4c3c-88d8-0efa7ecd2ff6" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
-    <MetadataFile FileName="TodoListLib.xsd" MetadataType="Schema" ID="d5bd273e-5472-4dc4-a7b0-4d0e92165f69" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="be4eb801-68c8-4968-bddd-4d155ccbc93f" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b9f7365d-f624-46be-9ec8-17bc3f00a4fb" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e9890648-5f49-4b4e-8e89-f6f15072ea83" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="8f9c9319-57af-4742-be53-fc34bf29dfcd" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
+    <MetadataFile FileName="TodoListLib.xsd" MetadataType="Schema" ID="dbddbff6-91a8-48a6-b34e-f62f26696db5" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="c17804d6-7854-459c-a740-725fd46ab6da" SourceId="1" SourceUrl="net.tcp://localhost:1919/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

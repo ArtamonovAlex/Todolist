@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}</ProjectGuid>
+    <ProjectGuid>{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Client</RootNamespace>
     <AssemblyName>Client</AssemblyName>
@@ -72,12 +72,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TodoListLib\TodoListLib.csproj">
-      <Project>{4e4b7004-11d7-4fc3-a065-4f7757745378}</Project>
-      <Name>TodoListLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\Editor\" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +85,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TodoListLib\TodoListLib.csproj">
+      <Project>{4E4B7004-11D7-4FC3-A065-4F7757745378}</Project>
+      <Name>TodoListLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

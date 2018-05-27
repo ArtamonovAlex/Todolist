@@ -23,5 +23,17 @@ namespace TodoListLib
         }
 
         public Task() { }
+
+        public override bool Equals(object obj)
+        {
+            if (Title == ((Task)obj).Title && Description == ((Task)obj).Description && Deadline == ((Task)obj).Deadline)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

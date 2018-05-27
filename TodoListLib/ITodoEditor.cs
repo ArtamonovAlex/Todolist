@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
+
 
 namespace TodoListLib
 {
@@ -21,6 +19,12 @@ namespace TodoListLib
         void InitializeList(string username);
 
         [OperationContract]
-        void AddTask(Task task);
+        void AddTask(string task);
+
+        [OperationContract]
+        string FindTasks(string[] tags);
+
+        [OperationContract]
+        void DeleteTasks(string tasks);
     }
 }

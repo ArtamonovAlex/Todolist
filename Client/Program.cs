@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TodoListLib;
 
 namespace Client
@@ -24,15 +25,26 @@ namespace Client
                 switch (option)
                 {
                     case 1:
-                        client.AddTask(TodoIO.AddTask());
+                        client.AddTask(JsonConverter.ToJson(TodoIO.AddTask()));
+                        Console.WriteLine("Task added!");
                         break;
                     case 2:
                         TodoList list = JsonConverter.GetObject<TodoList>(client.GetList());
                         TodoIO.PrintAll(list);
                         Console.WriteLine("All tasks printed!");
-
                         break;
                     case 3:
+                        List<Task> tasks = JsonConverter.GetObject<List<Task>>(client.FindTasks(TodoIO.GetTags()));
+                        if (TodoIO.FoundedTasks(tasks))
+                        {
+                            TodoList todo = JsonConverter.GetObject<TodoList>(client.GetList());
+                            foreach (Task task in tasks)
+                            {
+                                todo.Tasks.Remove(task);
+                            }
+                            client.DeleteTasks(JsonConverter.ToJson(todo));
+                            Console.WriteLine("Deleted!");
+                        }
                         break;
                     case 4:
                         break;
@@ -51,4 +63,3 @@ namespace Client
         }
     }
 }
-

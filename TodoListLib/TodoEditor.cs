@@ -49,10 +49,30 @@ namespace TodoListLib
             return JsonConverter.ToJson(task);
         }
 
-        public void AddTask(Task task)
+        public void AddTask(string task)
         {
-            List.Tasks.Add(task);
+            List.Tasks.Add(JsonConverter.GetObject<Task>(task));
             List.Sort();
+        }
+
+        public string FindTasks(string[] tags)
+        {
+            List<Task> result = List.Tasks.FindAll(delegate (Task c)
+            {
+                int counter = 0;
+                foreach (string tag in tags)
+                {
+                    if (c.Tags.Contains(tag)) counter++;
+                }
+                if (counter == tags.Length) return true;
+                else return false;
+            });
+            return JsonConverter.ToJson(result);
+        }
+
+        public void DeleteTasks(string tasks)
+        {
+            List = JsonConverter.GetObject<TodoList>(tasks);
         }
     }
 }

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListLib", "TodoListLib\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorHost", "EditorHost\EditorHost.csproj", "{052B76FD-8636-425E-8415-8F0B1952DF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{052B76FD-8636-425E-8415-8F0B1952DF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052B76FD-8636-425E-8415-8F0B1952DF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052B76FD-8636-425E-8415-8F0B1952DF39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5062CB1-5044-4A6C-B1B8-FA083FEBAF06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F0830A-6CD2-4FC0-AD5C-CBBC1C556F45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

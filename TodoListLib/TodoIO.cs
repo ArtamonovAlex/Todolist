@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TodoListLib
 {
@@ -23,7 +20,7 @@ namespace TodoListLib
                 Console.WriteLine("No tasks");
             }
         }
-        
+
         private static void PrintTask(Task item)
         {
             Console.WriteLine($"Title: {item.Title}");
@@ -69,6 +66,39 @@ namespace TodoListLib
             } while (tags[tags.Count - 1] != "");
             tags.Remove("");
             return new Task(title, description, date, tags);
+        }
+
+        public static string[] GetTags()
+        {
+            Console.Write("Input tags devided by whitespace: ");
+            string input = Console.ReadLine();
+            return input.Split((string[])null, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public static bool FoundedTasks(List<Task> result)
+        {
+            Console.WriteLine("Results:");
+            if (result.Count != 0)
+            {
+                foreach (Task item in result)
+                {
+                    PrintTask(item);
+                }
+                Console.WriteLine("Do you want to delete this tasks? Input 'y' if yes, other to continue");
+                if (Console.ReadLine() == "y")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no tasks with this tags");
+                return false;
+            }
         }
     } 
 }
