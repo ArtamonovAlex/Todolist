@@ -14,7 +14,11 @@ namespace Client
                 return;
             }
             var client = new Editor.TodoEditorClient("NetTcpBinding_ITodoEditor");
-            client.InitializeList(args[0]);
+            if (!client.InitializeList(args[0]))
+            {
+                Console.WriteLine("Can't access file. Abort process");
+                return;
+            }
             bool isWorking = true;
             while (isWorking)
             {
@@ -23,13 +27,24 @@ namespace Client
                     case 1:
                         {
                             client.AddTask(JsonConverter.ToJson(TodoIO.AddTask()));
-                            client.SaveMain(args[0]);
-                            Console.WriteLine("Task added!");
+                            if (!client.SaveMain(args[0]))
+                            {
+                                Console.WriteLine("Can't save changes. They won't be avaliable to other clients.");
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Task added!");
+                            }
                             break;
                         }
                     case 2:
                         {
-                            client.InitializeList(args[0]);
+                            if (!client.InitializeList(args[0]))
+                            {
+                                Console.WriteLine("Can't access file. Abort process");
+                                break;
+                            }
                             TodoList list = JsonConverter.GetObject<TodoList>(client.GetList());
                             TodoIO.PrintAll(list);
                             Console.WriteLine("All tasks printed!");
@@ -37,7 +52,11 @@ namespace Client
                         }
                     case 3:
                         {
-                            client.InitializeList(args[0]);
+                            if (!client.InitializeList(args[0]))
+                            {
+                                Console.WriteLine("Can't access file. Abort process");
+                                break;
+                            }
                             List<Task> tasks = JsonConverter.GetObject<List<Task>>(client.FindTasks(TodoIO.GetTags()));
                             if (TodoIO.FoundedTasks(tasks))
                             {
@@ -47,8 +66,15 @@ namespace Client
                                     todo.Tasks.Remove(task);
                                 }
                                 client.DeleteTasks(JsonConverter.ToJson(todo));
-                                client.SaveMain(args[0]);
-                                Console.WriteLine("Deleted!");
+                                if (!client.SaveMain(args[0]))
+                                {
+                                    Console.WriteLine("Can't save changes. They won't be avaliable to other clients.");
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Deleted!");
+                                }
                             }
                             break;
                         }
@@ -57,33 +83,31 @@ namespace Client
                             string path = TodoIO.ReadPath();
                             if (path != "cancel")
                             {
-                                try
+                                if (!client.Load(path))
                                 {
-                                    client.Load(path);
-                                    Console.WriteLine("Loaded!");
+                                    Console.WriteLine("Can't access file. Abort process");
+                                    break;
                                 }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                }
+                                Console.WriteLine("Loaded!");
                             }
                             break;
                         }
                     case 5:
                         {
-                            client.InitializeList(args[0]);
+                            if (!client.InitializeList(args[0]))
+                            {
+                                Console.WriteLine("Can't access file. Abort process");
+                                break;
+                            }
                             string path = TodoIO.ReadPath();
                             if (path != "cancel")
                             {
-                                try
+                                if (!client.SaveMain(args[0]))
                                 {
-                                    client.Save(path);
-                                    Console.WriteLine("Saved!");
+                                    Console.WriteLine("Can't save changes. They won't be avaliable to other clients.");
+                                    break;
                                 }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                }
+                                Console.WriteLine("Saved!");
                             }
                             break;
                         }

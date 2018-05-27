@@ -9,10 +9,10 @@ namespace TodoListLib
     {
         public TodoList List = new TodoList(new List<Task>());
 
-        public void InitializeList(string tableName)
+        public bool InitializeList(string tableName)
         {
             string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
-            Load(privatePath);
+            return Load(privatePath);
         }
 
         public string GetList()
@@ -51,9 +51,11 @@ namespace TodoListLib
             List = JsonConverter.GetObject<TodoList>(tasks);
         }
 
-        public void Save(string path)
+        public bool Save(string path)
         {
-            FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write);
+            FileStream file;
+            try { file = new FileStream(path, FileMode.Create, FileAccess.Write); }
+            catch (Exception) {return false; }
             using (StreamWriter writer = new StreamWriter(file))
             {
                 writer.WriteLine("Title;Description;Deadline;Tags");
@@ -70,18 +72,27 @@ namespace TodoListLib
                 }
             }
             file.Close();
+            return true;
         }
 
-        public void SaveMain(string tableName)
+        public bool SaveMain(string tableName)
         {
             string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
-            Save(privatePath);
+            return Save(privatePath);
         }
 
-        public void Load(string path)
+        public bool Load(string path)
         {
             List<Task> tasks = new List<Task> { };
-            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            FileStream file;
+            try
+            {
+                file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             using (StreamReader reader = new StreamReader(file))
             {
                 reader.ReadLine();
@@ -105,6 +116,8 @@ namespace TodoListLib
             }
             file.Close();
             List.Tasks = tasks;
+            return true;
         }
+
     }
 }
