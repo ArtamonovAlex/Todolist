@@ -6,7 +6,7 @@ namespace TodoListLib
     [Serializable]
     public class TodoList
     {
-        public List<Task> Tasks;
+        public List<Task> Tasks { get; set; }
 
         public TodoList() { }
 

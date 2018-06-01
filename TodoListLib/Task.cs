@@ -6,13 +6,13 @@ namespace TodoListLib
     [Serializable]
     public class Task
     {
-        public string Title;
+        public string Title { get; set; }
 
-        public string Description;
+        public string Description { get; set; }
 
-        public DateTime Deadline;
+        public DateTime Deadline { get; set; }
 
-        public List<string> Tags;
+        public List<string> Tags { get; set; }
 
         public Task(string title, string description, DateTime deadline, List<string> tags)
         {
