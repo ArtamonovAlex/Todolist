@@ -129,9 +129,9 @@ namespace Client
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("Хост разорвал соединение");
+                Console.WriteLine(ex.Message);
             }
         }
     }

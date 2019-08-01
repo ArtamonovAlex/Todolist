@@ -8,10 +8,11 @@ namespace TodoListLib
     public class TodoEditor : ITodoEditor
     {
         public TodoList List = new TodoList(new List<Task>());
+        private readonly string filesPath = "C:\\Users\\User\\Desktop\\";
 
         public bool InitializeList(string tableName)
         {
-            string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
+            string privatePath = $"{filesPath}list{tableName}.csv";
             return Load(privatePath);
         }
 
@@ -77,7 +78,7 @@ namespace TodoListLib
 
         public bool SaveMain(string tableName)
         {
-            string privatePath = $"C:\\Users\\artam\\Desktop\\list{tableName}.csv";
+            string privatePath = $"{filesPath}list{tableName}.csv";
             return Save(privatePath);
         }
 
@@ -85,6 +86,7 @@ namespace TodoListLib
         {
             List<Task> tasks = new List<Task> { };
             FileStream file;
+            if (File.Exists(path)) {
             try
             {
                 file = new FileStream(path, FileMode.Open, FileAccess.Read);
@@ -114,8 +116,12 @@ namespace TodoListLib
                     tasks.Add(task);
                 }
             }
+            
             file.Close();
+            }
             List.Tasks = tasks;
+            Save(path);
+
             return true;
         }
 
